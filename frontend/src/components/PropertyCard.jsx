@@ -44,7 +44,7 @@ const PropertyCard = ({ property }) => {
           </div>
           <div className="text-right">
             <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-              ${property.price.toLocaleString()}
+              ₹{property.price.toLocaleString()}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
               {property.pricePerSqft}/sqft
