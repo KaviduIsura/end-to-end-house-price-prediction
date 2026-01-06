@@ -139,7 +139,7 @@ For detailed information about specific components:
 
 ### Quick Access
 - 🌐 **Live Website:** [end-to-end-house-price-prediction.vercel.app](https://end-to-end-house-price-prediction.vercel.app)
-- 📁 **Source Code:** [GitHub Repository](your-github-repo-link)
+- 📁 **Source Code:** [GitHub Repository](https://github.com/KaviduIsura/end-to-end-house-price-prediction.git)
 
 ### Deployment Details
 - **Platform:** Vercel
