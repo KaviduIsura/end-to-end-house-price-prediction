@@ -166,7 +166,7 @@ const PricePredictor = () => {
         location: formData.location
       };
 
-      const response = await axios.post('http://localhost:5001/api/predict', submissionData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/predict`, submissionData, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -279,30 +279,30 @@ const PricePredictor = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto py-12 px-4">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-primary-500/10 mb-4">
+    <div className="max-w-6xl px-4 py-12 mx-auto">
+      <div className="mb-12 text-center">
+        <div className="inline-flex items-center justify-center p-3 mb-4 rounded-2xl bg-primary-500/10">
           <Calculator className="text-primary-500" size={32} />
         </div>
         <h1 className="section-title">AI Property Price Predictor</h1>
-        <p className="section-subtitle max-w-2xl mx-auto">
+        <p className="max-w-2xl mx-auto section-subtitle">
           Get accurate property valuations powered by machine learning. 
           Our AI analyzes thousands of data points for precise predictions.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid gap-8 lg:grid-cols-2">
         {/* Form Section */}
         <div className="card">
           <div className="flex items-center mb-6">
             <div className="p-2 rounded-lg bg-primary-500/10">
               <Home className="text-primary-500" size={24} />
             </div>
-            <h2 className="text-2xl font-bold ml-3">Property Details</h2>
+            <h2 className="ml-3 text-2xl font-bold">Property Details</h2>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid gap-6 md:grid-cols-2">
               <div>
                 <label className="label-text">
                   <Square size={16} className="inline mr-2" />
@@ -390,7 +390,7 @@ const PricePredictor = () => {
                 </select>
                 <div className="mt-2 text-sm">
                   {isImmediateAvailability() ? (
-                    <span className="text-green-600 dark:text-green-400 font-medium">
+                    <span className="font-medium text-green-600 dark:text-green-400">
                       ✓ Immediate availability (Value: 1)
                     </span>
                   ) : (
@@ -415,31 +415,31 @@ const PricePredictor = () => {
                       setShowLocationDropdown(true);
                     }}
                     onFocus={() => setShowLocationDropdown(true)}
-                    className="input-field pr-10"
+                    className="pr-10 input-field"
                     placeholder="Search or select location"
                     required
                   />
-                  <Search className="absolute right-3 top-3 text-gray-400" size={20} />
+                  <Search className="absolute text-gray-400 right-3 top-3" size={20} />
                   <ChevronDown 
-                    className="absolute right-10 top-3 text-gray-400 cursor-pointer" 
+                    className="absolute text-gray-400 cursor-pointer right-10 top-3" 
                     size={20}
                     onClick={() => setShowLocationDropdown(!showLocationDropdown)}
                   />
                   
                   {showLocationDropdown && (
-                    <div className="absolute z-50 w-full mt-1 bg-white dark:bg-dark-800 border border-gray-300 dark:border-dark-700 rounded-xl shadow-2xl max-h-64 overflow-y-auto">
+                    <div className="absolute z-50 w-full mt-1 overflow-y-auto bg-white border border-gray-300 shadow-2xl dark:bg-dark-800 dark:border-dark-700 rounded-xl max-h-64">
                       <div className="p-3 border-b border-gray-200 dark:border-dark-700">
                         <input
                           type="text"
                           value={locationSearch}
                           onChange={(e) => setLocationSearch(e.target.value)}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg dark:border-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
                           placeholder="Type to search locations..."
                           autoFocus
                         />
                       </div>
                       
-                      <div className="max-h-48 overflow-y-auto">
+                      <div className="overflow-y-auto max-h-48">
                         {filteredLocations.map((location) => (
                           <div
                             key={location.name}
@@ -457,7 +457,7 @@ const PricePredictor = () => {
                                   <span className={formData.location === location.name ? 'text-primary-600 dark:text-primary-400 font-medium' : ''}>
                                     {location.name}
                                   </span>
-                                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                  <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                                     {location.count.toLocaleString()} properties
                                   </div>
                                 </div>
@@ -495,11 +495,11 @@ const PricePredictor = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn-primary flex-1"
+                className="flex-1 btn-primary"
               >
                 {loading ? (
                   <span className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
+                    <div className="w-5 h-5 mr-2 border-b-2 border-white rounded-full animate-spin" />
                     Analyzing...
                   </span>
                 ) : (
@@ -512,19 +512,19 @@ const PricePredictor = () => {
               <button
                 type="button"
                 onClick={handleReset}
-                className="btn-secondary flex-1"
+                className="flex-1 btn-secondary"
               >
                 Reset Form
               </button>
             </div>
 
             {error && (
-              <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+              <div className="p-4 border bg-red-500/10 border-red-500/20 rounded-xl">
                 <div className="flex items-start">
                   <AlertCircle className="text-red-500 mr-2 mt-0.5" size={20} />
                   <div>
-                    <p className="text-red-500 font-medium">Error</p>
-                    <p className="text-red-400 text-sm mt-1">{error}</p>
+                    <p className="font-medium text-red-500">Error</p>
+                    <p className="mt-1 text-sm text-red-400">{error}</p>
                   </div>
                 </div>
               </div>
@@ -537,48 +537,48 @@ const PricePredictor = () => {
           {prediction ? (
             <>
               <div className="card bg-gradient-to-br from-primary-900/20 to-dark-800/50 border-primary-500/20">
-                <div className="text-center mb-8">
-                  <div className="inline-flex p-3 rounded-2xl bg-primary-500/20 mb-4">
+                <div className="mb-8 text-center">
+                  <div className="inline-flex p-3 mb-4 rounded-2xl bg-primary-500/20">
                     <Calculator className="text-primary-400" size={32} />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">AI Prediction Result</h3>
+                  <h3 className="mb-2 text-2xl font-bold text-white">AI Prediction Result</h3>
                   <p className="text-gray-300">Estimated market value</p>
                 </div>
 
-                <div className="text-center mb-8">
-                  <div className="text-5xl md:text-6xl font-bold text-white mb-2">
+                <div className="mb-8 text-center">
+                  <div className="mb-2 text-5xl font-bold text-white md:text-6xl">
                     {formatCurrency(prediction.price)}
                   </div>
                   <p className="text-gray-400">Total Property Value</p>
                 </div>
 
-                <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center p-3 rounded-xl bg-white/5">
+                <div className="mb-8 space-y-4">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5">
                     <span className="text-gray-400">Price per Sqft</span>
-                    <span className="text-white font-semibold">
+                    <span className="font-semibold text-white">
                       ₹{getPricePerSqft().toFixed(2)}/sqft
                     </span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-xl bg-white/5">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5">
                     <span className="text-gray-400">Location</span>
-                    <span className="text-primary-300 font-mono text-sm">
+                    <span className="font-mono text-sm text-primary-300">
                       {prediction.locationUsed.replace('location_', '')}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-xl bg-white/5">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5">
                     <span className="text-gray-400">Availability</span>
                     <span className={isImmediateAvailability() ? "text-green-400 font-semibold" : "text-orange-400 font-semibold"}>
                       {isImmediateAvailability() ? '✓ Immediate (1)' : 'Future (0)'}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-xl bg-white/5">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-white/5">
                     <span className="text-gray-400">AI Confidence</span>
-                    <span className="text-green-400 font-semibold">94.7%</span>
+                    <span className="font-semibold text-green-400">94.7%</span>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
-                  <button className="btn-primary flex-1">
+                  <button className="flex-1 btn-primary">
                     <Download className="mr-2" size={20} />
                     Save Report
                   </button>
@@ -590,20 +590,20 @@ const PricePredictor = () => {
               </div>
 
               <div className="card">
-                <h3 className="text-xl font-bold mb-4 flex items-center">
+                <h3 className="flex items-center mb-4 text-xl font-bold">
                   <TrendingUp className="mr-2 text-primary-500" size={24} />
                   Recommendations
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-start">
-                    <div className="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
-                    <span className="text-gray-300 text-sm">
+                    <div className="w-2 h-2 mt-2 mr-3 bg-green-400 rounded-full"></div>
+                    <span className="text-sm text-gray-300">
                       This price is competitive for a {getCurrentLocationTier()} tier location
                     </span>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 mr-3"></div>
-                    <span className="text-gray-300 text-sm">
+                    <div className="w-2 h-2 mt-2 mr-3 bg-blue-400 rounded-full"></div>
+                    <span className="text-sm text-gray-300">
                       Consider similar properties in nearby areas for better deals
                     </span>
                   </div>
@@ -612,12 +612,12 @@ const PricePredictor = () => {
             </>
           ) : (
             <div className="card bg-gradient-to-br from-dark-800/50 to-dark-900/30">
-              <div className="text-center py-12">
-                <div className="inline-flex p-4 rounded-2xl bg-primary-500/10 mb-6">
+              <div className="py-12 text-center">
+                <div className="inline-flex p-4 mb-6 rounded-2xl bg-primary-500/10">
                   <Calculator className="text-primary-400" size={40} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Get Instant Valuation</h3>
-                <p className="text-gray-400 mb-8">
+                <h3 className="mb-3 text-2xl font-bold text-white">Get Instant Valuation</h3>
+                <p className="mb-8 text-gray-400">
                   Fill in your property details to get an AI-powered price prediction.
                 </p>
                 <div className="inline-flex items-center space-x-2 text-primary-400">
@@ -629,7 +629,7 @@ const PricePredictor = () => {
           )}
 
           <div className="card">
-            <h3 className="text-xl font-bold mb-4 flex items-center">
+            <h3 className="flex items-center mb-4 text-xl font-bold">
               <Shield className="mr-2 text-primary-500" size={24} />
               How AI Prediction Works
             </h3>
@@ -641,7 +641,7 @@ const PricePredictor = () => {
                 { title: 'Location Scoring', desc: 'Evaluates neighborhood quality' },
               ].map((insight, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <div className="p-1 rounded bg-primary-500/20 mt-1">
+                  <div className="p-1 mt-1 rounded bg-primary-500/20">
                     <div className="w-2 h-2 rounded-full bg-primary-500" />
                   </div>
                   <div>
