@@ -129,16 +129,22 @@ For detailed information about specific components:
 
 ---
 
-## 🔗 Live Demos
+# Project Name
 
-### 📱 Laptop Price Predictor
-**Live URL:** [https://laptop-price-predictor-rouge.vercel.app](https://laptop-price-predictor-rouge.vercel.app)
+## 📱 Live Deployment
 
-[![Visit Laptop Predictor](https://img.shields.io/badge/Visit_Laptop_Predictor-Now-2ea44f?style=flat-square)](https://laptop-price-predictor-rouge.vercel.app)
+| Platform | Status | URL |
+|----------|--------|-----|
+| **Vercel** | ✅ Live | [https://end-to-end-house-price-prediction.vercel.app](https://end-to-end-house-price-prediction.vercel.app) |
 
-### 🏡 House Price Prediction
-**Live URL:** [https://end-to-end-house-price-prediction.vercel.app](https://end-to-end-house-price-prediction.vercel.app)
+### Quick Access
+- 🌐 **Live Website:** [end-to-end-house-price-prediction.vercel.app](https://end-to-end-house-price-prediction.vercel.app)
+- 📁 **Source Code:** [GitHub Repository](your-github-repo-link)
 
-[![Visit House Predictor](https://img.shields.io/badge/Visit_House_Predictor-Now-4A90E2?style=flat-square)](https://end-to-end-house-price-prediction.vercel.app)
+### Deployment Details
+- **Platform:** Vercel
+- **Status:** Production
+- **URL:** https://end-to-end-house-price-prediction.vercel.app
+
 
 **Built with ❤️ for house price prediction in Bangalore**
