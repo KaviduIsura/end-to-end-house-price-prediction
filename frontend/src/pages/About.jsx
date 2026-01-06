@@ -21,7 +21,7 @@ const About = () => {
       <div className="container mx-auto px-4">
         {/* Hero */}
         <div className="text-center mb-16">
-          <h1 className="section-title">About EstateAI</h1>
+          <h1 className="section-title">About Home Sage</h1>
           <p className="section-subtitle max-w-3xl mx-auto">
             We're revolutionizing the real estate industry with artificial intelligence, 
             making property transactions smarter, faster, and more transparent.

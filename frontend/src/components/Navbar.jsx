@@ -24,24 +24,27 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full z-50 glass-effect border-b border-white/10 dark:border-dark-700/30">
-      <div className="container mx-auto px-4 py-4">
+    <nav className="fixed z-50 w-full border-b glass-effect border-white/10 dark:border-dark-700/30">
+      <div className="container px-4 py-4 mx-auto">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-gradient-to-br from-primary-500 to-primary-700 p-2 rounded-xl group-hover:scale-110 transition-transform">
-              <Building2 className="text-white" size={28} />
+            <div className="p-2 transition-transform rounded-xl group-hover:scale-110">
+              <img 
+        src="/logo.png" 
+        alt="Home Sage Logo" 
+        className="w-auto h-16" ></img>
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
-                EstateAI
+              <h1 className="text-2xl font-bold text-transparent bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text">
+                Home Sage
               </h1>
               <p className="text-xs text-gray-600 dark:text-gray-400">Smart Real Estate</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="items-center hidden space-x-8 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -60,7 +63,7 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-full bg-gray-100 dark:bg-dark-700 hover:bg-gray-200 dark:hover:bg-dark-600 transition-colors"
+              className="p-2 transition-colors bg-gray-100 rounded-full dark:bg-dark-700 hover:bg-gray-200 dark:hover:bg-dark-600"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -70,13 +73,13 @@ const Navbar = () => {
           <div className="flex items-center space-x-4 md:hidden">
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-full bg-gray-100 dark:bg-dark-700"
+              className="p-2 bg-gray-100 rounded-full dark:bg-dark-700"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-dark-700"
+              className="p-2 bg-gray-100 rounded-lg dark:bg-dark-700"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -86,7 +89,7 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="mt-4 md:hidden animate-slide-up">
-            <div className="bg-white dark:bg-dark-800 rounded-2xl p-4 space-y-2 shadow-2xl">
+            <div className="p-4 space-y-2 bg-white shadow-2xl dark:bg-dark-800 rounded-2xl">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
